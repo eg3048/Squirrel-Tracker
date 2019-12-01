@@ -9,7 +9,7 @@ class Squirrel(models.Model):
         (PM, 'PM'),
     ]
 
-    JUVENILE = 'Juvenile'
+    JUVENILE = 'juvenile'
     ADULT = 'adult'
     AGE_CHOICES = [
         (JUVENILE, 'Juveline'),
@@ -28,7 +28,7 @@ class Squirrel(models.Model):
     ]
 
     GROUND_PLANE = 'ground plane'
-    ABOVE_GROUND = 'above_ground'
+    ABOVE_GROUND = 'above ground'
     LOCATION_CHOICES = [
         (GROUND_PLANE, 'Ground Plane'),
         (ABOVE_GROUND, 'Above Ground'),
@@ -49,7 +49,6 @@ class Squirrel(models.Model):
     unique_squirrel_id = models.CharField(
         max_length=15,
         help_text='Unique Squirrel ID',
-        unique=True
     )
 
     shift = models.CharField(
@@ -59,7 +58,8 @@ class Squirrel(models.Model):
     )
 
     date = models.DateField(
-        help_text='Date'
+        help_text='Date',
+        null=True,
     )
 
     age = models.CharField(
@@ -88,22 +88,27 @@ class Squirrel(models.Model):
 
     running = models.BooleanField(
         help_text='Running',
+        null=True,
     )
 
     chasing = models.BooleanField(
         help_text='Running',
+        null=True,
     )
 
     climbing = models.BooleanField(
         help_text='Climbing',
+        null=True,
     )
 
     eating = models.BooleanField(
         help_text='Eating',
+        null=True,
     )
 
     foraging = models.BooleanField(
         help_text='Foraging',
+        null=True,
     )
 
     other_activities = models.CharField(
@@ -113,32 +118,40 @@ class Squirrel(models.Model):
 
     kuks = models.BooleanField(
         help_text='Kuks',
+        null=True,
     )
 
     quaas = models.BooleanField(
         help_text='Quaas',
+        null=True,
     )
 
     moans = models.BooleanField(
         help_text='Moans',
+        null=True,
     )
 
     tail_flags = models.BooleanField(
         help_text='Tail flags',
+        null=True,
     )
 
     tail_twitches = models.BooleanField(
         help_text='Tail twitches',
+        null=True,
     )
 
     approaches = models.BooleanField(
         help_text='Approaches',
+        null=True,
     )
 
     indifferent = models.BooleanField(
         help_text='Indifferent',
+        null=True,
     )
 
     runs_from = models.BooleanField(
-        help_text='Runs from'
+        help_text='Runs from',
+        null=True,
     )
