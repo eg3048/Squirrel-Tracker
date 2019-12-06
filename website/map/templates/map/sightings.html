@@ -1,0 +1,9 @@
+{% if sightings_list %}
+    <ul>
+	 {% for squirrel in sightings_list %}
+		        <li><a href="/map/{{ squirrel.unique_squirrel_id }}/">{{ squirrel.unique_squirrel_id }}</a></li>
+			    {% endfor %}
+			        </ul>
+				{% else %}
+				    <p>No sightings are available.</p>
+				    {% endif %}
