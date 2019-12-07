@@ -37,12 +37,33 @@
                 </div>
               </div>
             </div>
+	    <div class="row">
+              <div class="col-md-6 mb-3">
+		<label for="date">Date</label>
+                <input type="text" class="form-control" id="date" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid Date is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+	        <label for="shift">Shift</label>
+                <select class="custom-select d-block w-100" id="shift" required>
+                  <option>Choose...</option>
+                  <option value="1">AM</option>
+		  <option value="2">PM</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid shift.
+                </div>
+              </div>
+            </div>
+
 
             <div class="mb-3">
               <label for="squirrel-id">Unique Squirrel ID</label>                
-              <input type="text" class="form-control" id="squirrel-id" placeholder="Username" required>
+              <input type="text" class="form-control" id="squirrel-id" placeholder="Auto generated from Date and Shift" required>
               <div class="invalid-feedback" style="width: 100%;">
-               Your username is required.
+               Valid ID is required.
               </div>
             </div>
 
