@@ -27,14 +27,14 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="latitude">Latitude</label>
-                <input type="text" class="form-control" id="latitude" placeholder="" value="" required>
+		<input type="text" class="form-control" id="latitude" placeholder="" value="{{form.latitude.value()}}" name={{form.latitude.name}} required>
                 <div class="invalid-feedback">
                   Valid latitude is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="longitude">Longitude</label>
-                <input type="text" class="form-control" id="longitude" placeholder="" value="" required>
+		<input type="text" class="form-control" id="longitude" placeholder="" value="{{form.longitude.value()}}" name={{form.longitude.name}} required>
                 <div class="invalid-feedback">
                   Valid longitude is required.
                 </div>
@@ -43,17 +43,17 @@
 	    <div class="row">
               <div class="col-md-6 mb-3">
 		<label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="" value="" required>
+		<input type="date" class="form-control" id="date" placeholder="" value="" name={{form.date.name}} required>
                 <div class="invalid-feedback">
                   Valid date is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
 	        <label for="shift">Shift</label>
-                <select class="custom-select d-block w-100" id="shift" required>
+		<select class="custom-select d-block w-100" id="shift" name={{form.shift.name}} required>
                   <option>Choose...</option>
-                  <option value="1">AM</option>
-		  <option value="2">PM</option>
+                  <option value="am">AM</option>
+		  <option value="pm">PM</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid shift.
@@ -62,28 +62,28 @@
             </div>
 	    <div class="mb-3">
               <label for="squirrel-id">Unique Squirrel ID</label>
-              <input type="text" class="form-control" id="squirrel-id" placeholder="Auto generated from Date and Shift">
+	      <input type="text" class="form-control" id="squirrel-id" name={{form.unique_squirrel_id.name}} placeholder="Auto generated from Date and Shift">
             </div>
 	    <div class="row">
 	      <div class="col-md-6 mb-3">
                 <label for="age">Age</label>
-                <select class="custom-select d-block w-100" id="age" required>
+		<select class="custom-select d-block w-100" id="age" name={{form.age.name}} required>
                   <option>Choose...</option>
-                  <option value="1">Juvenile</option>
-                  <option value="2">Adult</option>
+                  <option value="juvenile">Juvenile</option>
+                  <option value="adult">Adult</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid age.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="color">Color</label>
-                <select class="custom-select d-block w-100" id="color" required>
+                <label for="primary_fur_color">Color</label>
+		<select class="custom-select d-block w-100" id="primary_fur_color" name={{form.primary_fur_color.name}} required>
                   <option>Choose...</option>
-                  <option value="1">Cinnamon</option>
-                  <option value="2">White</option>
-		  <option value="2">Grey</option>
-		  <option value="2">Black</option>
+                  <option value="cinnamon">Cinnamon</option>
+                  <option value="white">White</option>
+		  <option value="grey">Grey</option>
+		  <option value="black">Black</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid color.
@@ -93,10 +93,10 @@
 	    <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="location">Location</label>
-                <select class="custom-select d-block w-100" id="location" required>
+		<select class="custom-select d-block w-100" id="location" name={{form.location.name}} required>
                   <option>Choose...</option>
-		  <option value="1">Ground Plane</option>
-                  <option value="2">Above Ground</option>
+		  <option value="ground plane">Ground Plane</option>
+                  <option value="above ground">Above Ground</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid location.
@@ -104,7 +104,7 @@
               </div>
               <div class="col-md-6 mb-3">
 		<label for="spec-location">Specific Location<span class="text-muted">(Optional)</span></label>
-    		<input type="text" class="form-control" id="spec-location" rows="3"></input>
+		<input type="text" class="form-control" id="spec-location" name={{form.specific_location.name}} rows="3"></input>
   	      </div>
             </div>
 	    <h2 class="mb3-3">Activities</h2>
@@ -112,120 +112,120 @@
 	    <div class="row">
               <div class="col">
                 <label for="running">Is it running ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="running">
+		<select class="custom-select d-block w-100" id="running" name={{form.running.name}}>
                   <option value="">Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
               <div class="col mb-3">
                 <label for="chasing">Is it chasing ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="chasing">
+		<select class="custom-select d-block w-100" id="chasing" name={{form.chasing.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
               <div class="col mb-3">
                 <label for="climbing">Is it climbing ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="climbing">
+		<select class="custom-select d-block w-100" id="climbing" name={{form.climbing.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
             </div>
             <div class="row">
               <div class="col mb-3">
-                <label for="chasing">Is it eating ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="chasing">
+                <label for="eating">Is it eating ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="eating" name={{form.eating.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
               <div class="col mb-3">
-                <label for="climbing">Is it foraging ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="climbing">
+                <label for="foraging">Is it foraging ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="foraging" name={{form.foraging.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
 	      <div class="col mb-3">
-                <label for="oth-activities">Other activities<span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="oth-location" rows="3"></input>
+                <label for="other_activities">Other activities<span class="text-muted">(Optional)</span></label>
+		<input type="text" class="form-control" id="other_activities" name={{form.other_activities.name}} rows="3"></input>
               </div>
             </div>
 	    <h2 class="mb3-3">Behaviour</h2>
 	    <hr class="mb-4">
 	    <div class="row">
               <div class="col mb-3">
-                <label for="kuk">Does it kuks ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="kuk">
+                <label for="kuks">Does it kuk ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="kuks" name={{form.kuks.name}}> 
                   <option value="">Choose...</option>
-                  <option value="1">Yes it does</option>
-                  <option value="2">No it does not</option>
+                  <option value="true">Yes it does</option>
+		  <option value="false">No it does not</option>
                 </select>
               </div>
               <div class="col mb-3">
-                <label for="quaas">Does it Quaas ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="quaas">
+                <label for="quaas">Does it Quaa ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="quaas" name={{form.quaas.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it does</option>
-                  <option value="2">No it does not</option>
+                  <option value="true">Yes it does</option>
+                  <option value="false">No it does not</option>
                 </select>
               </div>
               <div class="col mb-3">
-                <label for="moan">Does it moan ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="moan">
+                <label for="moans">Does it moan ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="moans" name={{form.moans.name}>
                   <option>Choose...</option>
-                  <option value="1">Yes it does</option>
-                  <option value="2">No it does not</option>
+                  <option value="true">Yes it does</option>
+                  <option value="false">No it does not</option>
                 </select>
               </div>
             </div>
             <div class="row">
               <div class="col mb-3">
-                <label for="flaging">Is tail flaging ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="flag">
+                <label for="tail_flags">Is tail flaging ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="tail_flag" name={{form.tail_flags.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
               <div class="col mb-3">
-                <label for="twitching">Is tail twitching ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="twitching">
+                <label for="tail_twitches">Is tail twitching ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="tail_twitches" name={{form.tail_twitches.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
 	      <div class="col mb-3">
-                <label for="approaching">Is it approaching ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="approaching">
+                <label for="approaches">Is it approaching ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="approaches name={{form.approaches.name}}">
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
             </div>
             <div class="row">
               <div class="col-4 mb-3">
                 <label for="indifferent">Is it indifferent ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="indifferent">
+		<select class="custom-select d-block w-100" id="indifferent" name={{form.indifferent.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
               <div class="col-4 mb-3">
-                <label for="running-away">Is it running away ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="running-away">
+                <label for="runs_from">Is it running away ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="runs_from" name={{form.runs_from.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes it is</option>
-                  <option value="2">No it is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
 	      <div class="col-2 mb-6">
@@ -244,7 +244,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {

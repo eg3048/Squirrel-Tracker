@@ -1,27 +1,20 @@
 from django import forms
 from .models import Squirrel
 class SquirrelForm(forms.ModelForm):
+    """
     latitude = forms.DecimalField(
-        max_digit=16,
-        decimal_places=13,
-        help_text='Latititude',
         widget=forms.TextInput(
             attrs={'class':'form-control'}
         )
     )
     
     longitude = forms.DecimalField(
-        max_digit=16,
-        decimal_places=13,
-        help_text='Longitude',
         widget=forms.TextInput(
             attrs={'class':'form-control'}
         )
     )
     
-    unique_squirrel_id = formds.CharField(
-        max_length=15,
-        help_text='Unique Squirrel ID',
+    unique_squirrel_id = forms.CharField(
         widget=forms.TextInput(
             attrs={'class':'form-control'}
         )
@@ -46,7 +39,7 @@ class SquirrelForm(forms.ModelForm):
     )
     
     location = forms.ChoiceField(
-        choices=LOCATION_CHOICES,
+        choices=Squirrel.LOCATION_CHOICES,
         help_text='Location',
     )
     
@@ -102,13 +95,13 @@ class SquirrelForm(forms.ModelForm):
         help_text='Is it approaching?',
         )
     
-    indifferent = models.NullBooleanField(
+    indifferent = forms.NullBooleanField(
         help_text='Is it indifferent ?',
     )
     
-    runs_from = models.NullBooleanField(
+    runs_from = forms.NullBooleanField(
         help_text='Is it running away ?',
-    )
+    )"""
     
 
 
