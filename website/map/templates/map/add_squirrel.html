@@ -11,27 +11,30 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/form-validation.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
-
     <div class="container">
       <div class="row">
         <div class="col-md-8 order-md-1">
           <h2 class="mb-3">Sighting information</h2>
-          <form class="needs-validation" novalidate>
+	  <hr class="mb-4">
+          <form class="needs-validation" method="post" novalidate>
+          {% csrf_token %}
+            <h2 class="mb-3">Sighting information</h2>
+            <hr class="mb-4">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="latitude">Latitude</label>
-                <input type="text" class="form-control" id="latitude" placeholder="" value="" required>
+		<input type="text" class="form-control" id="latitude" placeholder="" value="{{form.latitude.value()}}" name={{form.latitude.name}} required>
                 <div class="invalid-feedback">
                   Valid latitude is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="longitude">Longitude</label>
-                <input type="text" class="form-control" id="longitude" placeholder="" value="" required>
+		<input type="text" class="form-control" id="longitude" placeholder="" value="{{form.longitude.value()}}" name={{form.longitude.name}} required>
                 <div class="invalid-feedback">
                   Valid longitude is required.
                 </div>
@@ -40,17 +43,17 @@
 	    <div class="row">
               <div class="col-md-6 mb-3">
 		<label for="date">Date</label>
-                <input type="text" class="form-control" id="date" placeholder="" value="" required>
+		<input type="date" class="form-control" id="date" placeholder="" value="" name={{form.date.name}} required>
                 <div class="invalid-feedback">
                   Valid date is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
 	        <label for="shift">Shift</label>
-                <select class="custom-select d-block w-100" id="shift" required>
+		<select class="custom-select d-block w-100" id="shift" name={{form.shift.name}} required>
                   <option>Choose...</option>
-                  <option value="1">AM</option>
-		  <option value="2">PM</option>
+                  <option value="am">AM</option>
+		  <option value="pm">PM</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid shift.
@@ -59,28 +62,28 @@
             </div>
 	    <div class="mb-3">
               <label for="squirrel-id">Unique Squirrel ID</label>
-              <input type="text" class="form-control" id="squirrel-id" placeholder="Auto generated from Date and Shift" readonly>
+	      <input type="text" class="form-control" id="squirrel-id" name={{form.unique_squirrel_id.name}} placeholder="Auto generated from Date and Shift">
             </div>
 	    <div class="row">
 	      <div class="col-md-6 mb-3">
                 <label for="age">Age</label>
-                <select class="custom-select d-block w-100" id="age" required>
+		<select class="custom-select d-block w-100" id="age" name={{form.age.name}} required>
                   <option>Choose...</option>
-                  <option value="1">Juvenile</option>
-                  <option value="2">Adult</option>
+                  <option value="juvenile">Juvenile</option>
+                  <option value="adult">Adult</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid age.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="color">Color</label>
-                <select class="custom-select d-block w-100" id="color" required>
+                <label for="primary_fur_color">Color</label>
+		<select class="custom-select d-block w-100" id="primary_fur_color" name={{form.primary_fur_color.name}} required>
                   <option>Choose...</option>
-                  <option value="1">Cinnamon</option>
-                  <option value="2">White</option>
-		  <option value="2">Grey</option>
-		  <option value="2">Black</option>
+                  <option value="cinnamon">Cinnamon</option>
+                  <option value="white">White</option>
+		  <option value="grey">Grey</option>
+		  <option value="black">Black</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid color.
@@ -90,10 +93,10 @@
 	    <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="location">Location</label>
-                <select class="custom-select d-block w-100" id="location" required>
+		<select class="custom-select d-block w-100" id="location" name={{form.location.name}} required>
                   <option>Choose...</option>
-		  <option value="1">Ground Plane</option>
-                  <option value="2">Above Ground</option>
+		  <option value="ground plane">Ground Plane</option>
+                  <option value="above ground">Above Ground</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid location.
@@ -101,252 +104,146 @@
               </div>
               <div class="col-md-6 mb-3">
 		<label for="spec-location">Specific Location<span class="text-muted">(Optional)</span></label>
-    		<input type="text" class="form-control" id="spec-location" rows="3"></input>
+		<input type="text" class="form-control" id="spec-location" name={{form.specific_location.name}} rows="3"></input>
   	      </div>
             </div>
 	    <h2 class="mb3-3">Activities</h2>
-            <div class="row">
+            <hr class="mb-4">
+	    <div class="row">
               <div class="col">
-                <label for="running">Is he running ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="running">
+                <label for="running">Is it running ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="running" name={{form.running.name}}>
                   <option value="">Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="chasing">Is he chasing ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="chasing">
+              <div class="col mb-3">
+                <label for="chasing">Is it chasing ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="chasing" name={{form.chasing.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="climbing">Is he climbing ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="climbing">
+              <div class="col mb-3">
+                <label for="climbing">Is it climbing ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="climbing" name={{form.climbing.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
             </div>
             <div class="row">
-              <div class="col">
-                <label for="chasing">Is he eating ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="chasing">
+              <div class="col mb-3">
+                <label for="eating">Is it eating ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="eating" name={{form.eating.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="climbing">Is he foraging ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="climbing">
+              <div class="col mb-3">
+                <label for="foraging">Is it foraging ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="foraging" name={{form.foraging.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
-	      <div class="col">
-                <label for="oth-activities">Other activities<span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="oth-location" rows="3"></input>
+	      <div class="col mb-3">
+                <label for="other_activities">Other activities<span class="text-muted">(Optional)</span></label>
+		<input type="text" class="form-control" id="other_activities" name={{form.other_activities.name}} rows="3"></input>
               </div>
             </div>
 	    <h2 class="mb3-3">Behaviour</h2>
+	    <hr class="mb-4">
 	    <div class="row">
-              <div class="col">
-                <label for="kuk">Does he kuks ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="kuk">
+              <div class="col mb-3">
+                <label for="kuks">Does it kuk ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="kuks" name={{form.kuks.name}}> 
                   <option value="">Choose...</option>
-                  <option value="1">Yes he does</option>
-                  <option value="2">No he does not</option>
+                  <option value="true">Yes it does</option>
+		  <option value="false">No it does not</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="quaas">Does he Quaas ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="quaas">
+              <div class="col mb-3">
+                <label for="quaas">Does it Quaa ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="quaas" name={{form.quaas.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes he does</option>
-                  <option value="2">No he does not</option>
+                  <option value="true">Yes it does</option>
+                  <option value="false">No it does not</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="moan">Does he moan ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="moan">
+              <div class="col mb-3">
+                <label for="moans">Does it moan ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="moans" name={{form.moans.name}>
                   <option>Choose...</option>
-                  <option value="1">Yes he does</option>
-                  <option value="2">No he does not</option>
+                  <option value="true">Yes it does</option>
+                  <option value="false">No it does not</option>
                 </select>
               </div>
             </div>
             <div class="row">
-              <div class="col">
-                <label for="flag">Tail flaging ?<span class="text-muted">(Optional)</span></label>
-                <select class="custom-select d-block w-100" id="flag">
+              <div class="col mb-3">
+                <label for="tail_flags">Is tail flaging ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="tail_flag" name={{form.tail_flags.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="climbing">Is he foraging ?<span class="text-muted">(Optional)</span></label>
-                  <select class="custom-select d-block w-100" id="climbing">
+              <div class="col mb-3">
+                <label for="tail_twitches">Is tail twitching ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="tail_twitches" name={{form.tail_twitches.name}}>
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="oth-activities">Other activities<span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="oth-location" rows="3"></input>
-              </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-            <div class="mb-3">
-              <label for="email">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-            </div>
-
-            <div class="row">
-              <div class="col-md-5 mb-3">
-                <label for="country">Country</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>United States</option>
+	      <div class="col mb-3">
+                <label for="approaches">Is it approaching ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="approaches name={{form.approaches.name}}">
+                  <option>Choose...</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
                 </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="state">State</label>
-                <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Choose...</option>
-                  <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="zip">Zip</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
-                <div class="invalid-feedback">
-                  Zip code required.
-                </div>
-              </div>
-            </div>
-            <hr class="mb-4">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="same-address">
-              <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="save-info">
-              <label class="custom-control-label" for="save-info">Save this information for next time</label>
-            </div>
-            <hr class="mb-4">
-
-            <h4 class="mb-3">Payment</h4>
-
-            <div class="d-block my-3">
-              <div class="custom-control custom-radio">
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                <label class="custom-control-label" for="credit">Credit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="debit">Debit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="paypal">Paypal</label>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="cc-name">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                  Name on card is required
-                </div>
+              <div class="col-4 mb-3">
+                <label for="indifferent">Is it indifferent ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="indifferent" name={{form.indifferent.name}}>
+                  <option>Choose...</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
+                </select>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="cc-number">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                <div class="invalid-feedback">
-                  Credit card number is required
-                </div>
+              <div class="col-4 mb-3">
+                <label for="runs_from">Is it running away ?<span class="text-muted">(Optional)</span></label>
+		<select class="custom-select d-block w-100" id="runs_from" name={{form.runs_from.name}}>
+                  <option>Choose...</option>
+                  <option value="true">Yes it is</option>
+                  <option value="false">No it is not</option>
+                </select>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
+	      <div class="col-2 mb-6">
+                <button class="btn btn-primary btn-sm btn-block" type="submit">Add squirrel</button>
               </div>
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                <div class="invalid-feedback">
-                  Security code required
-                </div>
+              <div class="col-2 mb-6">
+                <button class="btn btn-primary btn-sm btn-block" type="submit">Cancel</button>
               </div>
             </div>
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-          </form>
-        </div>
-      </div>
-
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017-2018 Company Name</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
+	  </form>
+	</div>
+      </div>	
     </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -370,30 +267,5 @@
       })();
     </script>
   </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<doctype html>
-<html>
-        <body>
-                <form method="post">
-                {% csrf_token %}
-                {{form.as_p}}
-                <br>
-                <input type="submit" name="Submit">
-        </body>
 </html>
 

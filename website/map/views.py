@@ -22,6 +22,8 @@ def add_squirrel(request):
             if form.is_valid():
                     form.save()
                     return redirect('/map/sightings')
+            else:
+                print(form.errors)
     else:
         form=SquirrelForm()
     context = {
@@ -44,7 +46,7 @@ def edit_squirrel(request, squirrel_id):
     context = {
         'form':form,
     }
-    return render(request, 'map/edit_squirrel.html', context)
+    return render(request, 'map/add_squirrel.html', context)
 
 
 # Create your views here.
