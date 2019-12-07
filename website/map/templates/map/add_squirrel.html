@@ -11,17 +11,19 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/form-validation.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
-
     <div class="container">
       <div class="row">
         <div class="col-md-8 order-md-1">
           <h2 class="mb-3">Sighting information</h2>
 	  <hr class="mb-4">
-          <form class="needs-validation" novalidate>
+          <form class="needs-validation" method="post" novalidate>
+          {% csrf_token %}
+            <h2 class="mb-3">Sighting information</h2>
+            <hr class="mb-4">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="latitude">Latitude</label>
@@ -41,7 +43,7 @@
 	    <div class="row">
               <div class="col-md-6 mb-3">
 		<label for="date">Date</label>
-                <input type="text" class="form-control" id="date" placeholder="" value="" required>
+                <input type="date" class="form-control" id="date" placeholder="" value="" required>
                 <div class="invalid-feedback">
                   Valid date is required.
                 </div>
@@ -60,7 +62,7 @@
             </div>
 	    <div class="mb-3">
               <label for="squirrel-id">Unique Squirrel ID</label>
-              <input type="text" class="form-control" id="squirrel-id" placeholder="Auto generated from Date and Shift" readonly>
+              <input type="text" class="form-control" id="squirrel-id" placeholder="Auto generated from Date and Shift">
             </div>
 	    <div class="row">
 	      <div class="col-md-6 mb-3">
@@ -109,45 +111,45 @@
             <hr class="mb-4">
 	    <div class="row">
               <div class="col">
-                <label for="running">Is he running ?<span class="text-muted">(Optional)</span></label>
+                <label for="running">Is it running ?<span class="text-muted">(Optional)</span></label>
                 <select class="custom-select d-block w-100" id="running">
                   <option value="">Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="1">Yes it is</option>
+                  <option value="2">No it is not</option>
                 </select>
               </div>
               <div class="col mb-3">
-                <label for="chasing">Is he chasing ?<span class="text-muted">(Optional)</span></label>
+                <label for="chasing">Is it chasing ?<span class="text-muted">(Optional)</span></label>
                 <select class="custom-select d-block w-100" id="chasing">
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="1">Yes it is</option>
+                  <option value="2">No it is not</option>
                 </select>
               </div>
               <div class="col mb-3">
-                <label for="climbing">Is he climbing ?<span class="text-muted">(Optional)</span></label>
+                <label for="climbing">Is it climbing ?<span class="text-muted">(Optional)</span></label>
                   <select class="custom-select d-block w-100" id="climbing">
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="1">Yes it is</option>
+                  <option value="2">No it is not</option>
                 </select>
               </div>
             </div>
             <div class="row">
               <div class="col mb-3">
-                <label for="chasing">Is he eating ?<span class="text-muted">(Optional)</span></label>
+                <label for="chasing">Is it eating ?<span class="text-muted">(Optional)</span></label>
                 <select class="custom-select d-block w-100" id="chasing">
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="1">Yes it is</option>
+                  <option value="2">No it is not</option>
                 </select>
               </div>
               <div class="col mb-3">
-                <label for="climbing">Is he foraging ?<span class="text-muted">(Optional)</span></label>
+                <label for="climbing">Is it foraging ?<span class="text-muted">(Optional)</span></label>
                   <select class="custom-select d-block w-100" id="climbing">
                   <option>Choose...</option>
-                  <option value="1">Yes he is</option>
-                  <option value="2">No he is not</option>
+                  <option value="1">Yes it is</option>
+                  <option value="2">No it is not</option>
                 </select>
               </div>
 	      <div class="col mb-3">
@@ -226,39 +228,16 @@
                   <option value="2">No it is not</option>
                 </select>
               </div>
-	      <div class="col-2 mb-3">
+	      <div class="col-2 mb-6">
                 <button class="btn btn-primary btn-sm btn-block" type="submit">Add squirrel</button>
               </div>
-              <div class="col-2 mb-3">
+              <div class="col-2 mb-6">
                 <button class="btn btn-primary btn-sm btn-block" type="submit">Cancel</button>
               </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-            
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-          </form>
-        </div>
-      </div>
-
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017-2018 Company Name</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
+	  </form>
+	</div>
+      </div>	
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -266,9 +245,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -292,30 +268,5 @@
       })();
     </script>
   </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<doctype html>
-<html>
-        <body>
-                <form method="post">
-                {% csrf_token %}
-                {{form.as_p}}
-                <br>
-                <input type="submit" name="Submit">
-        </body>
 </html>
 

@@ -27,7 +27,7 @@ def add_squirrel(request):
     context = {
         'form':form,
     }
-    return render(request, 'map/add_squirrel.html', context)
+    return render(request, 'map/add.html', context)
 
 
 def edit_squirrel(request, squirrel_id):
