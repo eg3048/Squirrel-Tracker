@@ -5,7 +5,12 @@ from .models import Squirrel
 
 
 def map(request):
-    return HttpResponse('There should be a map here')
+    sightings= Squirrel.objects.order_by('-date')[:100]
+    template = loader.get_template('map/mappage.html')
+    context= {
+            'sightings':sightings,
+            }
+    return HttpResponse(template.render(context, request))
 
 def sightings(request):
     sightings_list = Squirrel.objects.order_by('-date')
@@ -15,4 +20,4 @@ def sightings(request):
     }
     return HttpResponse(template.render(context, request))
 
-# Create your views here.
+
