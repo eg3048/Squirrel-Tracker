@@ -12,6 +12,7 @@ class Command(BaseCommand):
 
         def handle(self, *args, **options):
             path = options['path']
+            print('importing data')
             with open (path) as f:
                 reader = csv.reader (f, delimiter=',', quotechar="\"")
                 fields_name = next(reader)
@@ -36,4 +37,5 @@ class Command(BaseCommand):
                                 setattr(squirrel, fields_name[i], field.lower())
                             else:
                                 setattr(squirrel, fields_name[i], field)
+                    print('data successfully imported')
                     squirrel.save()
