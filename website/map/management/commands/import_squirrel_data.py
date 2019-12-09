@@ -37,5 +37,5 @@ class Command(BaseCommand):
                                 setattr(squirrel, fields_name[i], field.lower())
                             else:
                                 setattr(squirrel, fields_name[i], field)
-                    print('data successfully imported')
                     squirrel.save()
+                print("data succesfully imported")
